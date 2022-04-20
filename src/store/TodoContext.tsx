@@ -20,6 +20,7 @@ interface InputElements {
 
 const TodoContext = React.createContext({} as ITodoContext)
 
+
 const TodoContextProvider: FunctionComponent<InputElements> = ({ children }) => {
     const [todo,setTodo] = useState<ITodo[]>([])
     const [modal,setModal] = useState(false);
