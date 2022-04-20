@@ -1,14 +1,15 @@
 import React,{FunctionComponent} from "react";
 import Todo from "./Todo";
 import {ITodo} from "../../store/TodoContext";
+
 interface ITodos {
-    todo: ITodo[]
+    todo: ITodo[],
 }
 const Todos: FunctionComponent<ITodos> = ({todo}) => {
     return (
-        <div>
+        <div className="flex flex-row flex-wrap">
             {todo.map((todoItem) =>
-                <Todo key={todoItem.id} todo={todoItem}/>
+                <Todo todo={todoItem} key={todoItem.id}/>
             )}
         </div>
     )

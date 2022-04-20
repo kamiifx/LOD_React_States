@@ -1,10 +1,19 @@
 import React,{FunctionComponent} from "react";
-import {ITodo, useTodoContext} from "../../store/TodoContext";
+import {ITodo} from "../../store/TodoContext";
+import {todoListState} from "../../store/recoil/todoAtoms";
+import {useRecoilState} from "recoil";
+
 interface ITodoItem{
-    todo: ITodo
+    todo:  ITodo
 }
-const Todo: FunctionComponent<ITodoItem> = ({todo}) => {
-    const {deleteTodo} = useTodoContext()
+const TodoRecoil: FunctionComponent<ITodoItem> = ({todo}) => {
+
+    const [todoList, setTodoList] = useRecoilState(todoListState)
+
+    const deleteTodo = (todoItem: ITodo): void => {
+        const newTodos = todoList.filter((todo) => todo.id !== todoItem.id)
+        setTodoList(newTodos);
+    }
     return (
         <div>
             <div className="shadow-lg h-[10em] w-[18em] m-4 border-indigo-300 border-2 rounded-md relative">
@@ -20,4 +29,4 @@ const Todo: FunctionComponent<ITodoItem> = ({todo}) => {
     )
 }
 
-export default Todo;
+export default TodoRecoil;

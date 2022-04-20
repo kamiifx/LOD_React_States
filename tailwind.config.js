@@ -5,7 +5,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'nunito': ['Nunito', 'sans-serif']
+        'sora': ['Sora', 'sans-serif'],
+        'epilogue': ['Epilogue', 'sans-serif'],
+        'hahmlet': ['Hahmlet', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+        'manrope': ['Manrope', 'sans-serif'],
+        'raleway': ['Raleway', 'sans-serif'],
+        'oxygen' : ['Oxygen', 'sans-serif']
       }
     },
   },

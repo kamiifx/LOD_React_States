@@ -1,12 +1,9 @@
 import React, {FunctionComponent, SetStateAction} from "react";
 import uniqueId from "lodash.uniqueid";
-import {ITodo} from "../../store/TodoContext";
-interface ITodoContextModal {
-    modal:boolean,
-    addTodo:(newTodo: ITodo) => void,
-    setModal: React.Dispatch<SetStateAction<boolean>>
-}
-const TodoContextModal: FunctionComponent<ITodoContextModal> = ({modal,addTodo, setModal}) => {
+import {createTodo, TodoStore} from "../../store/pullState/TodoStore";
+import Todo from "../ContextOnly/Todo";
+
+const TodoPullStateModal: FunctionComponent = () => {
 
     const onFormSubmit = (e: React.SyntheticEvent): void => {
         e.preventDefault();
@@ -20,13 +17,17 @@ const TodoContextModal: FunctionComponent<ITodoContextModal> = ({modal,addTodo, 
             id: uniqueId(),
             author: "You",
         }
-        addTodo(newTodo);
-        setModal(false)
+
+        createTodo(newTodo)
+
+        TodoStore.update(m => { m.modal = false})
     }
+
+    const modal = TodoStore.useState(m => m.modal);
 
     return (
         <div className={modal ? "absolute top-[30%] left-[43%] shadow-lg shadow-indigo-400/30 p-14 border-solid border-2 rounded-md border-indigo-300 bg-white" : "hidden"}>
-            <button className="absolute top-1 right-3 font-semibold font-nunito text-gray-500" onClick={() => setModal(false)}>X</button>
+            <button className="absolute top-1 right-3 font-semibold font-nunito text-gray-500" onClick={() => {TodoStore.update(m => {m.modal = false})}} >X</button>
             <form onSubmit={onFormSubmit}>
                 <h1 className="mb-4 font-nunito font-semibold text-lg">Create a todo</h1>
                 <div className="flex flex-col">
@@ -44,4 +45,4 @@ const TodoContextModal: FunctionComponent<ITodoContextModal> = ({modal,addTodo, 
     )
 }
 
-export default TodoContextModal;
+export default TodoPullStateModal;

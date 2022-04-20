@@ -1,10 +1,11 @@
 import React,{FunctionComponent} from "react";
-import {ITodo, useTodoContext} from "../../store/TodoContext";
+import {ITodo} from "../../store/TodoContext";
+import {deleteTodo} from "../../store/pullState/TodoStore";
+
 interface ITodoItem{
-    todo: ITodo
+    todo:  ITodo
 }
-const Todo: FunctionComponent<ITodoItem> = ({todo}) => {
-    const {deleteTodo} = useTodoContext()
+const TodoRecoil: FunctionComponent<ITodoItem> = ({todo}) => {
     return (
         <div>
             <div className="shadow-lg h-[10em] w-[18em] m-4 border-indigo-300 border-2 rounded-md relative">
@@ -20,4 +21,4 @@ const Todo: FunctionComponent<ITodoItem> = ({todo}) => {
     )
 }
 
-export default Todo;
+export default TodoRecoil;

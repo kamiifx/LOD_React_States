@@ -8,11 +8,12 @@ const TodosWithContext: FunctionComponent = () => {
     return (
         <div>
             <TodoContextModal modal={modal} addTodo={createTodo} setModal={setModal}/>
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 px-2 py-1 rounded font-mono text-white mt-5 shadow-md hover:scale-110 duration-100 shadow-blue-400/50"
+            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 shadow-blue-400/50 px-2 py-1 rounded font-inter text-md mt-20 text-white mt-12 shadow-md hover:scale-110 duration-100 border-none"
                 onClick={() => {setModal(true)}}
             >
                 Add Todo
             </button>
+            <div className="bg-gray-300 h-[2px] mt-6 w-full"/>
             <Todos todo={todo}/>
         </div>
     )

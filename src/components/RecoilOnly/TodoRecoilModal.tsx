@@ -1,12 +1,14 @@
 import React, {FunctionComponent, SetStateAction} from "react";
 import uniqueId from "lodash.uniqueid";
-import {ITodo} from "../../store/TodoContext";
+import {useRecoilState} from "recoil";
+import {todoListState} from "../../store/recoil/todoAtoms";
 interface ITodoContextModal {
     modal:boolean,
-    addTodo:(newTodo: ITodo) => void,
     setModal: React.Dispatch<SetStateAction<boolean>>
 }
-const TodoContextModal: FunctionComponent<ITodoContextModal> = ({modal,addTodo, setModal}) => {
+const TodoContextModal: FunctionComponent<ITodoContextModal> = ({modal, setModal}) => {
+
+    const [todoList, setTodoList] = useRecoilState(todoListState)
 
     const onFormSubmit = (e: React.SyntheticEvent): void => {
         e.preventDefault();
@@ -20,7 +22,9 @@ const TodoContextModal: FunctionComponent<ITodoContextModal> = ({modal,addTodo, 
             id: uniqueId(),
             author: "You",
         }
-        addTodo(newTodo);
+
+        setTodoList([...todoList,newTodo])
+
         setModal(false)
     }
 

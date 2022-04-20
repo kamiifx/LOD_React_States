@@ -19,10 +19,12 @@ interface InputElements {
     children?: React.ReactNode,
 }
 
+/*Intializing our Context*/
 const TodoContext = React.createContext({} as ITodoContext)
 
 
 const TodoContextProvider: FunctionComponent<InputElements> = ({ children }) => {
+    /*Initial State*/
     const [todo,setTodo] = useState<ITodo[]>([])
     const [modal,setModal] = useState(false);
 
@@ -43,6 +45,7 @@ const TodoContextProvider: FunctionComponent<InputElements> = ({ children }) => 
         setTodo(newTodos);
     }
 
+    /*Creating a provider to keep the childeren components that are gonna use the states, stated in the Context*/
     return (
         <TodoContext.Provider value={{todo,setTodo,modal,setModal,createTodo, deleteTodo}}>
             { children }
@@ -52,4 +55,6 @@ const TodoContextProvider: FunctionComponent<InputElements> = ({ children }) => 
 
 export default TodoContextProvider;
 
+/* A little hook called useContext, enabling use to easily import states and functions, stated in this context
+*  It requires the initilized Context.*/
 export const useTodoContext = () => React.useContext(TodoContext)
