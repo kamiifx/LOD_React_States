@@ -10,11 +10,7 @@ function App() {
             <h1 className="font-nunito text-3xl">Todos</h1>
             <Routes>
                 <Route path="/" element={<StateMain/>}/>
-                <Route path="context">
-                    <TodoContextProvider>
-                        <TodosWithContext/>
-                    </TodoContextProvider>
-                </Route>
+                <Route path="context" element={<TodosWithContext/>}/>
             </Routes>
         </div>
     </BrowserRouter>
