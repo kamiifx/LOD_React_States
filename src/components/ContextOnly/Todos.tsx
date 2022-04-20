@@ -7,8 +7,9 @@ interface ITodos {
 const Todos: FunctionComponent<ITodos> = ({todo}) => {
     return (
         <div>
-            //Array Map here
-            <Todo/>
+            {todo.map((todoItem) =>
+                <Todo key={todoItem.id} todo={todoItem}/>
+            )}
         </div>
     )
 }

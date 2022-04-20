@@ -8,7 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/lodash.uniqueid": "^4.0.7",
     "autoprefixer": "^10.4.4",
+    "lodash.uniqueid": "^4.0.1",
     "postcss": "^8.4.12",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

@@ -1,12 +1,15 @@
 import React,{FunctionComponent} from "react";
-
-const Todo: FunctionComponent = ({}) => {
+import {ITodo} from "../../store/TodoContext";
+interface ITodoItem{
+    todo: ITodo
+}
+const Todo: FunctionComponent<ITodoItem> = ({todo}) => {
     return (
-        <div>
-            <h1>Title</h1>
+        <div className="shadow-md ">
+            <h1>{todo.title}</h1>
             <div>
-                <p>Description</p>
-                <p>Made By</p>
+                <p>{todo.description}</p>
+                <p>{todo.author}</p>
             </div>
         </div>
     )
